@@ -46,6 +46,9 @@ main {
 
 .section-list {
   margin-top: 25px;
+  /* display: grid; */
+  /* grid-template-columns: 415px 1fr; */
+  /* column-gap: 15px; */
 }
 
 .cards-list {
@@ -75,6 +78,7 @@ main {
   border-radius: 10px;
   margin-bottom: 10px;
   width: 385px;
+  /* align-self: baseline; */
 }
 
 .add-new-card-form {
@@ -196,6 +200,13 @@ main {
 
 .circle:disabled:hover:before, .circle:disabled:hover:after {
   background-color: rgb(255, 92, 92);
+}
+
+.card-name {
+  margin: 0;
+  margin-bottom: 4px;
+  font-style: italic;
+  text-align: right;
 }
 
 .card-title {

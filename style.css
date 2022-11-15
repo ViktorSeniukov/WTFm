@@ -16,6 +16,32 @@ main {
   font-size: 75px;
   text-align: center;
   color: #FCFCFC;
+  position: relative;
+  text-shadow: 3px 2px 5px #2D344D;
+}
+
+.span-media {
+  color: rgb(255, 94, 252);
+  font-size: 55px;
+  text-shadow: -0   -1px 0   #FCFCFC,
+		 0   -1px 0   #FCFCFC,
+		-0    1px 0   #FCFCFC,
+		 0    1px 0   #FCFCFC,
+		-1px -0   0   #FCFCFC,
+		 1px -0   0   #FCFCFC,
+		-1px  0   0   #FCFCFC,
+		 1px  0   0   #FCFCFC,
+		-1px -1px 0   #FCFCFC,
+		 1px -1px 0   #FCFCFC,
+		-1px  1px 0   #FCFCFC,
+		 1px  1px 0   #FCFCFC,
+		-1px -1px 0   #FCFCFC,
+		 1px -1px 0   #FCFCFC,
+		-1px  1px 0   #FCFCFC,
+		 1px  1px 0   #FCFCFC;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 30px);
 }
 
 .section-list {

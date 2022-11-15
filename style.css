@@ -182,15 +182,20 @@ main {
 }
 
 .circle:disabled {
-  border-color: red;
+  border-color: rgb(255, 121, 121);
 }
 
 .circle:disabled:hover {
   background-color: rgba(255, 0, 0, .1);
+  border-color: rgb(255, 92, 92);
 }
 
 .circle:disabled::before, .circle:disabled::after {
-  background-color: red;
+  background-color: rgb(255, 121, 121);
+}
+
+.circle:disabled:hover:before, .circle:disabled:hover:after {
+  background-color: rgb(255, 92, 92);
 }
 
 .card-title {

@@ -38,7 +38,8 @@ main {
 		-1px -1px 0   #FCFCFC,
 		 1px -1px 0   #FCFCFC,
 		-1px  1px 0   #FCFCFC,
-		 1px  1px 0   #FCFCFC;
+		 1px  1px 0   #FCFCFC,
+     3px 2px 4px #2D344D;
   position: absolute;
   left: 50%;
   transform: translate(-50%, 30px);

@@ -1,8 +1,3 @@
-// const { default: axios } = require("axios");
-
-// const { createElement } = require("react");
-
-// let btnCircle = document.getElementsByClassName("cricle");
 const btn = document.getElementById("button");
 let form = document.querySelector('#form');
 let cardList = document.querySelector(".cards-list");
@@ -10,10 +5,7 @@ let newCardName = document.querySelector("#input-name");
 let newCardTitle = document.querySelector("#input-title");
 let newCardText = document.querySelector("#input-text");
 
-// console.log(cardItem);
-// let firstCardItem = cardItem[0];
-// console.log(firstCardItem);
-
+const authKey = localStorage.getItem('key');
 
 function addCard(event) {
   event.preventDefault();
@@ -27,20 +19,14 @@ function addCard(event) {
   cardItem.innerHTML = '<p class="card-name">'+cardItemName+'</p> <h2 class="card-title">'+cardItemTitle+'</h2> <p class="card-text">'+cardItemText+'</p>';
   cardList.insertBefore(cardItem, firstCardItem);
 
-  let url = 'https://sheet.best/api/sheets/2c798965-3ead-48a5-aa4f-cf29b2a39e3d';
+  const url = 'http://wbwf.space/api/test/';
   console.log(url);
 
-  axios.post(url, {
+  axios({"url":url, "method": "post", headers: {auth: authKey}, data: {
     name: cardItemName,
     title: cardItemTitle,
     text: cardItemText
-  })
-  .then(function (ressponse) {
-    console.log(ressponse);
-  })
-  .then(function (error) {
-    console.log(error);
-  });
+  }})
 }
 
 function validation() {
@@ -52,34 +38,31 @@ function validation() {
   }
 }
 
-let url = 'https://sheet.best/api/sheets/2c798965-3ead-48a5-aa4f-cf29b2a39e3d';
-console.log(url);
+const url = 'http://wbwf.space/api/test';
 
-axios.get(url).then(res => {
-  console.log(res.data);
+function updatePage() {
+  const url = 'http://wbwf.space/api/test';
+  axios({"url":url, "method": "get", headers: {auth: authKey}}).then(res => {
+    console.log(res);
 
-  let dataLength = res.data.length;
-  console.log(dataLength);
+    let dataLength = res.data.data.length;
+    let dataDataData = res.data.data;
 
-  for (let i = 0; i < res.data.length; i++) {
-    let cardItemAll = document.querySelectorAll(".card-item");
-    let lastItem = document.createElement('li');
-    lastItem.className = 'card-item'
-    let lastItemName = res.data[i].name;
-    let lastItemTitle = res.data[i].title;
-    let lastItemText = res.data[i].text;
-    console.log(lastItemName, lastItemTitle, lastItemText);
-    lastItem.innerHTML = '<p class="card-name">'+lastItemName+'</p> <h2 class="card-title">'+lastItemTitle+'</h2> <p class="card-text">'+lastItemText+'</p>';
-    let firstTwoCardItem = cardItemAll[0];
-    cardList.insertBefore(lastItem, firstTwoCardItem);
-  }
-})
-.then(function (ressponse) {
-  console.log(ressponse);
-})
-.then(function (error) {
-  console.log(error);
-});
+    for (let i = 0; i < dataLength; i++) {
+      let cardItemAll = document.querySelectorAll(".card-item");
+      let lastItem = document.createElement('li');
+      lastItem.className = 'card-item'
+      let lastItemName = dataDataData[i].name || '';
+      let lastItemTitle = dataDataData[i].title || '';
+      let lastItemText = dataDataData[i].text || '';
+      lastItem.innerHTML = '<p class="card-name">'+lastItemName+'</p> <h2 class="card-title">'+lastItemTitle+'</h2> <p class="card-text">'+lastItemText+'</p>';
+      let firstTwoCardItem = cardItemAll[0];
+      cardList.insertBefore(lastItem, firstTwoCardItem);
+    }
+  })
+}
+
+updatePage();
 
 newCardTitle.addEventListener('input', validation);
 form.addEventListener("submit", addCard);
